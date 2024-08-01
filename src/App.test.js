@@ -40,8 +40,20 @@ test('renders increment button', () => {
 
 test('counter starts at 0', () => {
   const wrapper = setup();
-  const counterValue = findByTestAttribute(wrapper, 'count-value').text();
-  expect(counterValue).toEqual('0');
+  const count = findByTestAttribute(wrapper, 'count-value').text();
+  expect(count).toBe('0');
 });
 
-test('counter increments on user action', () => {});
+test('counter increments on user action', () => {
+  const wrapper = setup();
+
+  // Find the Button
+  const incrementButton = findByTestAttribute(wrapper, 'increment-button');
+
+  // Click the Button
+  incrementButton.simulate('click');
+
+  // Check Counter Value has been increased
+  const count = findByTestAttribute(wrapper, 'count-value').text();
+  expect(count).toBe('1');
+});
