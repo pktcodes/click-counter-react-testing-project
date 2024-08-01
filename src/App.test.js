@@ -26,7 +26,7 @@ test('renders app component without error', () => {
   expect(appComponent.length).toBe(1);
 });
 
-test('render counter heading', () => {
+test('renders counter heading', () => {
   const wrapper = setup();
   const counterHeading = findByTestAttribute(wrapper, 'counter-heading');
   expect(counterHeading.length).toBe(1);
@@ -38,6 +38,10 @@ test('renders increment button', () => {
   expect(incrementButton.length).toBe(1);
 });
 
-test('counter starts at 0 ', () => {});
+test('counter starts at 0', () => {
+  const wrapper = setup();
+  const counterValue = findByTestAttribute(wrapper, 'count-value').text();
+  expect(counterValue).toEqual('0');
+});
 
 test('counter increments on user action', () => {});
